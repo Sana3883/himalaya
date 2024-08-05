@@ -1,0 +1,24 @@
+INFO:    underlay of /usr/bin/nvidia-smi required more than 50 (393) bind mounts
+/opt/conda/lib/python3.12/site-packages/himalaya/ridge/_random_search.py:491: UserWarning: Solving ridge is slower than solving kernel ridge when n_samples < n_features (here 9000 < 16384). Using a linear kernel in himalaya.kernel_ridge.KernelRidgeCV or himalaya.kernel_ridge.solve_kernel_ridge_cv_eigenvalues would be faster. Use warn=False to silence this warning.
+  warnings.warn(
+****************Data_shape
+(23267, 16384) (22582, 261880)
+(9000, 16384) (1000, 16384) (9000, 261880) (1000, 261880)
+Traceback (most recent call last):
+  File "/home/sahmadi/multi_v2/GPU_Himaliya_cupy_23.py", line 54, in <module>
+    my_func_new_1()
+  File "/home/sahmadi/multi_v2/GPU_Himaliya_cupy_23.py", line 40, in my_func_new_1
+    ridge_cv_results = solve_ridge_cv_svd(
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.12/site-packages/himalaya/ridge/_random_search.py", line 510, in solve_ridge_cv_svd
+    tmp = solve_group_ridge_random_search([X], Y, **copied_params,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.12/site-packages/himalaya/ridge/_random_search.py", line 204, in solve_group_ridge_random_search
+    scores = backend.zeros_like(gammas,
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.12/site-packages/himalaya/backend/torch.py", line 239, in zeros_like
+    return torch.zeros(shape, dtype=dtype, device=device, layout=array.layout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 96.58 GiB. GPU 0 has a total capacity of 14.75 GiB of which 4.75 GiB is free. Including non-PyTorch memory, this process has 10.00 GiB memory in use. Of the allocated memory 9.88 GiB is allocated by PyTorch, and 5.07 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+
+
